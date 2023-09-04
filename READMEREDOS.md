@@ -101,8 +101,50 @@
 После успешной установки, вы должны увидеть следующее сообщение:
 
 Если данного сообщения нет, то скопируйте из терминала сообщения в процессе установки и сохраните в файл.
-Файл загрузите на ресурс https://tmpfiles.org и отправьте 
+Файл загрузите на ресурс https://tmpfiles.org и отправьте
 
+###  Как проверить какие сервисы запущены
+Запущенные службы Systemd 
+
+`systemctl —type=service —state=running`.
+ 
+Службы запущенные через supervisord 
+
+`sudo supervisorctl status`.
+
+### Как проверить что запущены нужные
+
+Команда: 
+`for name in ds-metrics ds-converter ds-docservice supervisord postgresql rabbitmq-server redis nginx; do echo ${name} $(systemctl is-active ${name}) $(systemctl is-enabled ${name}); done | column -t | grep --color=always '\(disabled\|inactive\|$\)'`
+
+Результат:
+
+```
+ds-metrics       active  enabled
+ds-converter     active  enabled
+ds-docservice    active  enabled
+supervisord      active  enabled
+postgresql       active  enabled
+rabbitmq-server  active  enabled
+redis            active  enabled
+nginx            active  enabled
+```
+
+Важен статус `active`
+
+Команда: 
+`sudo supervisorctl status "cddisk:*"`
+
+Результат
+```
+cddisk:api                       RUNNING   pid 1213, uptime 0:45:54
+cddisk:filestorage               RUNNING   pid 1214, uptime 0:45:54
+cddisk:processing                RUNNING   pid 1215, uptime 0:45:54
+cddisk:registry                  RUNNING   pid 1217, uptime 0:45:54
+cddisk:searchapi                 RUNNING   pid 1216, uptime 0:45:54
+```
+
+Важен статус `RUNNING`
 
 ## Контакты
 
