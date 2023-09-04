@@ -66,41 +66,41 @@
 
 В процессе установки требуется ввод пользователя:
 Если требуется выполнить чистую установку, то в диалоге
-![OFFLINE?](./cleaninstall.png)
 - Настраивается cddisk "Make clean install?": Выбрать Да (Yes)
 Если не требуется выполнить чистую установку, то в диалоге
 - Настраивается cddisk "Make clean install?": Выбрать Нет (No)
-![OFFLINE?](./installpostgres.png)
+![OFFLINE?](./cleaninstall.png)
 Для установки базы данных на локальный компьютер:
 - Настраивается cddisk "Install postgresql on local pc?": Выбрать Да (Yes)
+![OFFLINE?](./installpostgres.png)
 Для установки Document Server в диалоге
-![OFFLINE?](./installds.png)
 - Настраивается cddisk "Install Document Server?": Выбрать Да (Yes)
-![OFFLINE?](./ds_secret.png)
+![OFFLINE?](./installds.png)
 - Настраивается cddisk "Enter Document Server secret:" ввести секретный ключ выбрать *Ok*
-![OFFLINE?](./ds_dbpasswd.png)
+![OFFLINE?](./ds_secret.png)
 - Настраивается r7-office-documentserver-ee "Database password:" ввести **saSA123$** выбрать *Ok*
-![OFFLINE?](./postgres_type.png)
+![OFFLINE?](./ds_dbpasswd.png)
 - Настраивается cddisk "Choose database type": Выбрать postgresql
-![OFFLINE?](./postgres_crdb.png)
+![OFFLINE?](./postgres_type.png)
 - Настраивается cddisk "Create database": Выбрать Да (Yes)
-![OFFLINE?](./postgres_host.png)
+![OFFLINE?](./postgres_crdb.png)
 - Настраивается cddisk "Database host": ввести имя домена куда устанавливается база данных *Ok* (по-умолчанию *localhost*)
-![OFFLINE?](./postgres_port.png)
+![OFFLINE?](./postgres_host.png)
 - Настраивается cddisk "Database port": ввести tcp порт базы данных *Ok* (по-умолчанию *5432*)
-![OFFLINE?](./postgres_db.png)
+![OFFLINE?](./postgres_port.png)
 - Настраивается cddisk "Database user for create DB": ввести имя пользователя, под которым будет работать база данных *Ok* (по-умолчанию *postgres*)
+![OFFLINE?](./postgres_db.png)
+- Настраивается cddisk "Database password:" два раза ввести **saSA123$** выбрать *Ok*
 ![OFFLINE?](./postgres_pwd.png)
 ![OFFLINE?](./postgres_retype_pwd.png)
-- Настраивается cddisk "Database password:" два раза ввести **saSA123$** выбрать *Ok*
-![OFFLINE?](./postgres_key.png)
 - Настраивается cddisk "The salt to be used during the key derivation process:" ввести ключ, который будет использоваться для генерации хэшей паролей *Ok* (по-умолчанию *Vskoproizvolny Salt par Chivreski_*)
-![OFFLINE?](./cddisk_domain.png)
+![OFFLINE?](./postgres_key.png)
 - Настраивается cddisk "Domain name:" ввести имя домена куда устанавливается cddisk *Ok* (по-умолчанию *local.ru*)
-![OFFLINE?](./cdmail_host.png)
+![OFFLINE?](./cddisk_domain.png)
 - Настраивается cdmail "Domain name:" ввести имя домена куда устанавливается cdmail *Ok* (по-умолчанию *local.ru*)
-![OFFLINE?](./calendar_host.png)
+![OFFLINE?](./cdmail_host.png)
 - Настраивается calendar "Domain name:" ввести имя домена куда устанавливается calendar *Ok* (по-умолчанию *local.ru*)
+![OFFLINE?](./calendar_host.png)
 
 Дождаться завершения установки
 
@@ -123,8 +123,8 @@ CDDisk setup cmpleted.
 Файл загрузите на ресурс https://tmpfiles.org и отправьте 
 
 
-![OFFLINE?](./check_hosts.png)
 При локальной установке проверьте название сайтов в файле hosts:
+![OFFLINE?](./check_hosts.png)
 
 
 ###  Как проверить какие сервисы запущены
