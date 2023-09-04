@@ -132,6 +132,8 @@ nginx            active  enabled
 
 Важен статус `active`
 
+Подробное состояние можно получить командой `systemctl status <имя сервиса>`
+
 Команда: 
 `sudo supervisorctl status "cddisk:*"`
 
@@ -145,6 +147,17 @@ cddisk:searchapi                 RUNNING   pid 1216, uptime 0:45:54
 ```
 
 Важен статус `RUNNING`
+
+### Как проверить логи сервисов
+
+Логи сервисов расположены:
+
+- Сервера документов /var/log/r7-office/documentserver
+- CDDisk /var/log/r7-office/CDDisk
+- nginx /var/log/nginx
+- rabbitmq /var/log/rabbitmq
+- redis /var/log/redis
+- supervisor /var/log/supervisor
 
 ## Контакты
 
