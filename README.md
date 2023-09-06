@@ -114,68 +114,29 @@
 - Если авторизация не работает в браузере посмотреть ответ от api нажав кнопку F12, если 502 то выполнить команду sudo supervisorctl restart cddisk:*, если при выполнение возникли ошибки, то проверить логи /var/log/r7-office/
 - Если в логах EACCES то выполнить команду chmod 755 /opt/r7-office, выполнить команду sudo supervisorctl restart cddisk:*, в случае успешного старта всех сервисов выполнить запрос по url https://cddisk.вашдомен/api/v1/version
 
-### Подтверждение установки
+### Проверка установки
 
-После успешной установки, вы должны увидеть следующее сообщение:
-CDDisk setup cmpleted.
+После успешной установки, будет запущена проверка установки, для этого:
+- Введите имя домена, указанное для установки,
+![OFFLINE?](./check_1.png)
+- Выберите тип установки: http или https.
+![OFFLINE?](./check_2.png)
 
-Если данного сообщения нет, то скопируйте из терминала сообщения в процессе установки и сохраните в файл.
-Файл загрузите на ресурс https://tmpfiles.org и отправьте 
+Выполняется проверка установленных сервисов и программ, записей в файле /etc/hosts, проверка подключения к установленным сайтам.
+![OFFLINE?](./check_3.png)
 
+Будут выведены пути, где располагаются логи установленных сервисов и программ.
+![OFFLINE?](./check_4.png)
 
-При локальной установке проверьте название сайтов в файле hosts:
-![OFFLINE?](./check_hosts.png)
+В случае успешной установки будет выведена надпись "Установка прошла успешно" и информация как получиь доступ к установленным сайтам.
+![OFFLINE?](./check_5.png)
 
+Если установка завершилась с ошибкой, будет выведена надпись "Ошибка" и информация для связи с разработчиками.
+![OFFLINE?](./check_error.png)
 
-###  Как проверить какие сервисы запущены
-Запущенные службы Systemd 
-
-`systemctl —type=service —state=running`.
- 
-Службы запущенные через supervisord 
-
-`sudo supervisorctl status`.
-
-### Как проверить что запущены нужные
-
-Команда: 
-`for name in supervisord postgresql rabbitmq-server redis nginx; do echo ${name} $(systemctl is-active ${name}) $(systemctl is-enabled ${name}); done | column -t | grep --color=always '\(disabled\|inactive\|$\)'`
-
-Результат:
-
-```
-supervisord      active  enabled
-postgresql       active  enabled
-rabbitmq-server  active  enabled
-redis            active  enabled
-nginx            active  enabled
-```
-
-Важен статус `active`
-
-Подробное состояние можно получить командой `systemctl status <имя сервиса>`
-
-Команда: 
-`sudo supervisorctl status "cddisk:*"`
-
-Результат:
-![OFFLINE?](./check_supervisor.png)
-
-Важен статус `RUNNING`
-
-
-### Как проверить логи сервисов
-
-Логи сервисов расположены:
-
-- Сервера документов /var/log/r7-office/documentserver
-- CDDisk /var/log/r7-office/CDDisk
-- nginx /var/log/nginx
-- rabbitmq /var/log/rabbitmq
-- redis /var/log/redis
-- supervisor /var/log/supervisor
-
+В текущем каталоге сохраняется лог установки в файл logfile.txt.
+В случае возникновения ошибок, отправьте лог файл по почте в поддержку.
 
 ## Контакты
 
-Если у вас есть вопросы или предложения, пожалуйста, свяжитесь с нами через телеграм @lex_ufa.
+Если у вас есть вопросы или предложения, пожалуйста, свяжитесь с нами через телеграм support@r7-office.ru.
