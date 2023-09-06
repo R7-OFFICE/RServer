@@ -80,8 +80,6 @@
 ![OFFLINE?](./ds_secret.png)
 - Настраивается r7-office-documentserver-ee "Database password:" ввести **saSA123$** выбрать *Ok*
 ![OFFLINE?](./ds_dbpasswd.png)
-- Настраивается cddisk "Choose database type": Выбрать postgresql
-![OFFLINE?](./postgres_type.png)
 - Настраивается cddisk "Create database": Выбрать Да (Yes)
 ![OFFLINE?](./postgres_crdb.png)
 - Настраивается cddisk "Database host": ввести имя домена куда устанавливается база данных *Ok* (по-умолчанию *localhost*)
