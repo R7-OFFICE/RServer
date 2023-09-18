@@ -73,13 +73,24 @@
 Для установки базы данных на локальный компьютер:
 - Настраивается cddisk "Install postgresql on local pc?": Выбрать Да (Yes)
 ![OFFLINE?](./installpostgres.png)
-Для установки Document Server в диалоге
+Для установки Document Server в локальной машине, в диалоге
 - Настраивается cddisk "Install Document Server?": Выбрать Да (Yes)
 ![OFFLINE?](./installds.png)
-- Настраивается cddisk "Enter Document Server secret:" ввести секретный ключ выбрать *Ok*
+- Настраивается cddisk "Enter Document Server secret:" ввести секретный ключ, выбрать *Ok*
 ![OFFLINE?](./ds_secret.png)
-- Настраивается r7-office-documentserver-ee "Database password:" ввести **saSA123$** выбрать *Ok*
+- Настраивается r7-office-documentserver-ee "Database password:" ввести **saSA123$**, выбрать *Ok*
 ![OFFLINE?](./ds_dbpasswd.png)
+Если Document Server не будет установливаться в локальной машине, в диалоге
+- Настраивается cddisk "Install Document Server?": Выбрать Нет (No)
+- Настраивается cddisk "Document server URL:" ввести URL где установлен Document Server, выбрать *Ok*
+![OFFLINE?](./deb_ext_ds_host.png)
+- Настраивается cddisk "Document Server JWT key:" ввести секретный ключ установленого Document Server, выбрать *Ok*
+![OFFLINE?](./deb_ext_ds_jwt_key.png)
+Для установки CDDisk, в диалоге
+- Настраивается cddisk "Install CDDisk api & web?": Выбрать Да (Yes)
+![OFFLINE?](./deb_install_cddisk.png)
+- Настраивается cddisk "Choose database type": Выбрать postgresql
+![OFFLINE?](./deb_choose_db_type.png)
 - Настраивается cddisk "Create database": Выбрать Да (Yes)
 ![OFFLINE?](./postgres_crdb.png)
 - Настраивается cddisk "Database host": ввести имя домена куда устанавливается база данных *Ok* (по-умолчанию *localhost*)
@@ -93,12 +104,10 @@
 ![OFFLINE?](./postgres_retype_pwd.png)
 - Настраивается cddisk "The salt to be used during the key derivation process:" ввести ключ, который будет использоваться для генерации хэшей паролей *Ok* (по-умолчанию *Vskoproizvolny Salt par Chivreski_*)
 ![OFFLINE?](./postgres_key.png)
+- Настраивается cddisk "Make https access to site. Make https?": Выбрать Yes или No
+![OFFLINE?](./deb_cddisk_https.png)
 - Настраивается cddisk "Domain name:" ввести имя домена куда устанавливается cddisk *Ok* (по-умолчанию *local.ru*)
 ![OFFLINE?](./cddisk_domain.png)
-- Настраивается cdmail "Domain name:" ввести имя домена куда устанавливается cdmail *Ok* (по-умолчанию *local.ru*)
-![OFFLINE?](./cdmail_host.png)
-- Настраивается calendar "Domain name:" ввести имя домена куда устанавливается calendar *Ok* (по-умолчанию *local.ru*)
-![OFFLINE?](./calendar_host.png)
 
 Дождаться завершения установки
 
