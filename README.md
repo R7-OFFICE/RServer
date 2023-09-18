@@ -64,6 +64,7 @@
 Если требуется поддержка HTTPS, перед установкой скопируйте crt и key файлы в папку sslcert. Имя файла должно содержать название домена и расширение.
 Например, для домена yandex.ru имена файлов долдны быть yandex.ru.crt и yandex.ru.key.
 
+Внимание!!! Во время чистой установки удаляется postgresql server вместе с базами, document server, cddisk, cdmail и calendar вместе с содержимым.
 В процессе установки требуется ввод пользователя:
 Если требуется выполнить чистую установку, то в диалоге
 - Настраивается cddisk "Make clean install?": Выбрать Да (Yes)
@@ -84,7 +85,7 @@
 - Настраивается cddisk "Install Document Server?": Выбрать Нет (No)
 - Настраивается cddisk "Document server URL:" ввести URL где установлен Document Server, выбрать *Ok*
 ![OFFLINE?](./deb_ext_ds_host.png)
-- Настраивается cddisk "Document Server JWT key:" ввести секретный ключ установленого Document Server, выбрать *Ok*
+- Настраивается cddisk "Document Server JWT key:" ввести секретный ключ установленного Document Server, выбрать *Ok*
 ![OFFLINE?](./deb_ext_ds_jwt_key.png)
 Для установки CDDisk, в диалоге
 - Настраивается cddisk "Install CDDisk api & web?": Выбрать Да (Yes)
@@ -121,6 +122,7 @@
 - Если авторизация не работает в браузере посмотреть ответ от api нажав кнопку F12, если 502 то выполнить команду sudo supervisorctl restart cddisk:*, если при выполнение возникли ошибки, то проверить логи /var/log/r7-office/
 - Если в логах EACCES то выполнить команду chmod 755 /opt/r7-office, выполнить команду sudo supervisorctl restart cddisk:*, в случае успешного старта всех сервисов выполнить запрос по url https://cddisk.вашдомен/api/v1/version
 
+
 ### Проверка установки
 
 После успешной установки, будет запущена проверка установки, для этого:
@@ -143,6 +145,105 @@
 
 В текущем каталоге сохраняется лог установки в файл logfile.txt.
 В случае возникновения ошибок, отправьте лог файл по почте в поддержку.
+
+
+## Варианты установки
+
+1. Установка на локальную машину.
+
+Если требуется поддержка HTTPS, перед установкой скопируйте crt и key файлы в папку sslcert. Имя файла должно содержать название домена и расширение.
+Если требуется выполнить чистую установку, то в диалоге
+- Настраивается cddisk "Make clean install?": Выбрать Да (Yes)
+Если не требуется выполнить чистую установку, то в диалоге
+- Настраивается cddisk "Make clean install?": Выбрать Нет (No)
+- Настраивается cddisk "Install postgresql on local pc?": Выбрать Да (Yes)
+- Настраивается cddisk "Install Document Server?": Выбрать Да (Yes)
+- Настраивается cddisk "Enter Document Server secret:" ввести секретный ключ, выбрать *Ok*
+- Настраивается r7-office-documentserver-ee "Database password:" ввести **saSA123$**, выбрать *Ok*
+- Настраивается cddisk "Install CDDisk api & web?": Выбрать Да (Yes)
+- Настраивается cddisk "Choose database type": Выбрать postgresql
+- Настраивается cddisk "Create database": Выбрать Да (Yes)
+- Настраивается cddisk "Database host": оставить *localhost*, выбрать *Ok*
+- Настраивается cddisk "Database port": оставить *5432*, выбрать *Ok*
+- Настраивается cddisk "Database user for create DB": ввести имя пользователя, под которым будет работать база данных *Ok* (по-умолчанию *postgres*)
+- Настраивается cddisk "Database password:" два раза ввести **saSA123$** выбрать *Ok*
+- Настраивается cddisk "The salt to be used during the key derivation process:" ввести ключ, который будет использоваться для генерации хэшей паролей *Ok* (по-умолчанию *Vskoproizvolny Salt par Chivreski_*)
+- Настраивается cddisk "Make https access to site. Make https?": Выбрать Yes или No
+- Настраивается cddisk "Domain name:" ввести имя домена куда устанавливается cddisk *Ok* (по-умолчанию *local.ru*)
+Дождаться завершения установки.
+
+2. Установка cddisk и Document Server на локальную машину, базы данных на удалённую машину.
+
+Внимание! Права доступа Postgresql server на удалённой машине должны быть настроены для создания базы данных.
+Если требуется поддержка HTTPS, перед установкой скопируйте crt и key файлы в папку sslcert. Имя файла должно содержать название домена и расширение.
+Если требуется выполнить чистую установку, то в диалоге
+- Настраивается cddisk "Make clean install?": Выбрать Да (Yes)
+Если не требуется выполнить чистую установку, то в диалоге
+- Настраивается cddisk "Make clean install?": Выбрать Нет (No)
+- Настраивается cddisk "Install postgresql on local pc?": Выбрать Нет (No)
+- Настраивается cddisk "Install Document Server?": Выбрать Да (Yes)
+- Настраивается cddisk "Enter Document Server secret:" ввести секретный ключ, выбрать *Ok*
+- Настраивается r7-office-documentserver-ee "Database password:" ввести **saSA123$**, выбрать *Ok*
+- Настраивается cddisk "Install CDDisk api & web?": Выбрать Да (Yes)
+- Настраивается cddisk "Choose database type": Выбрать postgresql
+- Настраивается cddisk "Create database": Выбрать Да (Yes)
+- Настраивается cddisk "Database host": ввести host машины с установленным postgresql server, выбрать *Ok*
+- Настраивается cddisk "Database port": ввести port машины с установленным postgresql server, выбрать *Ok*
+- Настраивается cddisk "Database user for create DB": ввести имя пользователя, под которым будет работать база данных *Ok* (по-умолчанию *postgres*)
+- Настраивается cddisk "Database password:" ввести **saSA123$**, выбрать *Ok*
+- Настраивается cddisk "The salt to be used during the key derivation process:" ввести ключ, который будет использоваться для генерации хэшей паролей *Ok* (по-умолчанию *Vskoproizvolny Salt par Chivreski_*)
+- Настраивается cddisk "Make https access to site. Make https?": Выбрать Yes или No
+- Настраивается cddisk "Domain name:" ввести имя домена куда устанавливается cddisk *Ok* (по-умолчанию *local.ru*)
+Дождаться завершения установки.
+
+3. Установка cddisk на локальную машину, базы данных на удалённую машину. Document Server установлен на удалённой машине.
+
+Внимание! Права доступа Postgresql server на удалённой машине должны быть настроены для создания базы данных.
+Если требуется поддержка HTTPS, перед установкой скопируйте crt и key файлы в папку sslcert. Имя файла должно содержать название домена и расширение.
+Если требуется выполнить чистую установку, то в диалоге
+- Настраивается cddisk "Make clean install?": Выбрать Да (Yes)
+Если не требуется выполнить чистую установку, то в диалоге
+- Настраивается cddisk "Make clean install?": Выбрать Нет (No)
+- Настраивается cddisk "Install postgresql on local pc?": Выбрать Нет (No)
+- Настраивается cddisk "Install Document Server?": Выбрать Нет (No)
+- Настраивается cddisk "Document server URL:" ввести URL где установлен Document Server, выбрать *Ok*
+- Настраивается cddisk "Document Server JWT key:" ввести секретный ключ установленного Document Server, выбрать *Ok*
+- Настраивается cddisk "Install CDDisk api & web?": Выбрать Да (Yes)
+- Настраивается cddisk "Choose database type": Выбрать postgresql
+- Настраивается cddisk "Create database": Выбрать Да (Yes)
+- Настраивается cddisk "Database host": ввести host машины с установленным postgresql server, выбрать *Ok*
+- Настраивается cddisk "Database port": ввести port машины с установленным postgresql server, выбрать *Ok*
+- Настраивается cddisk "Database user for create DB": ввести имя пользователя, под которым будет работать база данных *Ok* (по-умолчанию *postgres*)
+- Настраивается cddisk "Database password:" ввести **saSA123$**, выбрать *Ok*
+- Настраивается cddisk "The salt to be used during the key derivation process:" ввести ключ, который будет использоваться для генерации хэшей паролей *Ok* (по-умолчанию *Vskoproizvolny Salt par Chivreski_*)
+- Настраивается cddisk "Make https access to site. Make https?": Выбрать Yes или No
+- Настраивается cddisk "Domain name:" ввести имя домена куда устанавливается cddisk *Ok* (по-умолчанию *local.ru*)
+Дождаться завершения установки.
+
+4. Установка cddisk на локальную машину, база данных cddisk установлена на удалённую машину, Document Server установлен на удалённую машину.
+
+Внимание! Права доступа Postgresql server на удалённой машине должны быть настроены для создания базы данных.
+Если требуется поддержка HTTPS, перед установкой скопируйте crt и key файлы в папку sslcert. Имя файла должно содержать название домена и расширение.
+Если требуется выполнить чистую установку, то в диалоге
+- Настраивается cddisk "Make clean install?": Выбрать Да (Yes)
+Если не требуется выполнить чистую установку, то в диалоге
+- Настраивается cddisk "Make clean install?": Выбрать Нет (No)
+- Настраивается cddisk "Install postgresql on local pc?": Выбрать Нет (No)
+- Настраивается cddisk "Install Document Server?": Выбрать Нет (No)
+- Настраивается cddisk "Document server URL:" ввести URL где установлен Document Server, выбрать *Ok*
+- Настраивается cddisk "Document Server JWT key:" ввести секретный ключ установленного Document Server, выбрать *Ok*
+- Настраивается cddisk "Install CDDisk api & web?": Выбрать Да (Yes)
+- Настраивается cddisk "Choose database type": Выбрать postgresql
+- Настраивается cddisk "Create database": Выбрать Нет (No)
+- Настраивается cddisk "Database host": ввести host машины с установленным postgresql server, выбрать *Ok*
+- Настраивается cddisk "Database port": ввести port машины с установленным postgresql server, выбрать *Ok*
+- Настраивается cddisk "Database user for create DB": ввести имя пользователя, под которым будет работать база данных *Ok* (по-умолчанию *postgres*)
+- Настраивается cddisk "Database password:" ввести пароль пользователя базы данных, выбрать *Ok*
+- Настраивается cddisk "The salt to be used during the key derivation process:" ввести ключ, который будет использоваться для генерации хэшей паролей *Ok* (по-умолчанию *Vskoproizvolny Salt par Chivreski_*)
+- Настраивается cddisk "Make https access to site. Make https?": Выбрать Yes или No
+- Настраивается cddisk "Domain name:" ввести имя домена куда устанавливается cddisk *Ok* (по-умолчанию *local.ru*)
+Дождаться завершения установки.
+
 
 ## Контакты
 
