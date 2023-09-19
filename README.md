@@ -109,6 +109,8 @@
 ![OFFLINE?](./deb_cddisk_https.png)
 - Настраивается cddisk "Domain name:" ввести имя домена куда устанавливается cddisk *Ok* (по-умолчанию *local.ru*)
 ![OFFLINE?](./cddisk_domain.png)
+- Настраивается cddisk "Prefix name:" ввести префикс *Ok* (по-умолчанию *cddisk*, значение не может быть *admin*, *cdmail* или *calendar*)
+![OFFLINE?](./deb_cddisk_name.png.png)
 
 Дождаться завершения установки
 
@@ -170,6 +172,7 @@
 - Настраивается cddisk "The salt to be used during the key derivation process:" ввести ключ, который будет использоваться для генерации хэшей паролей *Ok* (по-умолчанию *Vskoproizvolny Salt par Chivreski_*)
 - Настраивается cddisk "Make https access to site. Make https?": Выбрать Yes или No
 - Настраивается cddisk "Domain name:" ввести имя домена куда устанавливается cddisk *Ok* (по-умолчанию *local.ru*)
+- Настраивается cddisk "Prefix name:" ввести префикс *Ok* (по-умолчанию *cddisk*, значение не может быть *admin*, *cdmail* или *calendar*)
 Дождаться завершения установки.
 
 2. Установка cddisk и Document Server на локальную машину, базы данных на удалённую машину.
@@ -194,6 +197,7 @@
 - Настраивается cddisk "The salt to be used during the key derivation process:" ввести ключ, который будет использоваться для генерации хэшей паролей *Ok* (по-умолчанию *Vskoproizvolny Salt par Chivreski_*)
 - Настраивается cddisk "Make https access to site. Make https?": Выбрать Yes или No
 - Настраивается cddisk "Domain name:" ввести имя домена куда устанавливается cddisk *Ok* (по-умолчанию *local.ru*)
+- Настраивается cddisk "Prefix name:" ввести префикс *Ok* (по-умолчанию *cddisk*, значение не может быть *admin*, *cdmail* или *calendar*)
 Дождаться завершения установки.
 
 3. Установка cddisk на локальную машину, базы данных на удалённую машину. Document Server установлен на удалённой машине.
@@ -218,6 +222,7 @@
 - Настраивается cddisk "The salt to be used during the key derivation process:" ввести ключ, который будет использоваться для генерации хэшей паролей *Ok* (по-умолчанию *Vskoproizvolny Salt par Chivreski_*)
 - Настраивается cddisk "Make https access to site. Make https?": Выбрать Yes или No
 - Настраивается cddisk "Domain name:" ввести имя домена куда устанавливается cddisk *Ok* (по-умолчанию *local.ru*)
+- Настраивается cddisk "Prefix name:" ввести префикс *Ok* (по-умолчанию *cddisk*, значение не может быть *admin*, *cdmail* или *calendar*)
 Дождаться завершения установки.
 
 4. Установка cddisk на локальную машину, база данных cddisk установлена на удалённую машину, Document Server установлен на удалённую машину.
@@ -242,6 +247,7 @@
 - Настраивается cddisk "The salt to be used during the key derivation process:" ввести ключ, который будет использоваться для генерации хэшей паролей *Ok* (по-умолчанию *Vskoproizvolny Salt par Chivreski_*)
 - Настраивается cddisk "Make https access to site. Make https?": Выбрать Yes или No
 - Настраивается cddisk "Domain name:" ввести имя домена куда устанавливается cddisk *Ok* (по-умолчанию *local.ru*)
+- Настраивается cddisk "Prefix name:" ввести префикс *Ok* (по-умолчанию *cddisk*, значение не может быть *admin*, *cdmail* или *calendar*)
 Дождаться завершения установки.
 
 
